@@ -1,3 +1,12 @@
+# Welcome 
+
+I decided to build this project because i love pokemon and i thought it's good starting project on learning react.
+It's my first time using react and honestly i feel overwhelmed, there's a lot of options to do the same thing.
+After a few reading and asking a few AI, i decided to build this project using react-router, react-query, and zustand.
+Super exited, i hope i don't lose motivation midway...
+
+================================================================================================================
+
 # Welcome to React Router!
 
 A modern, production-ready template for building full-stack React applications using React Router.

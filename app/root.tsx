@@ -45,6 +45,8 @@ export default function App() {
   return <Outlet />;
 }
 
+//react query and zustand
+
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = "Oops!";
   let details = "An unexpected error occurred.";

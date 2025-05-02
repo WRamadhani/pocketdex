@@ -7,9 +7,28 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./infrastructure/react-query/queryClient";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 import type { Route } from "./+types/root";
 import "./app.css";
 
+// import { pokeApiPokemonRepository } from "./infrastructure/api/pokeapi/PokeApiPokemonRepository";
+
+// export async function loader() {
+//   return {
+//     data: (await pokeApiPokemonRepository.getPokemonList(10, 0)).results,
+//   };
+// }
+
+// export function HydrateFallback({ loaderData }: Route.ComponentProps) {
+//   return (
+//     <div>
+//       <h1>Loading data ...</h1>
+//     </div>
+//   );
+// }
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -17,15 +36,17 @@ export const links: Route.LinksFunction = () => [
     href: "https://fonts.gstatic.com",
     crossOrigin: "anonymous",
   },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
 ];
+
+// console.log(
+//   pokeApiPokemonRepository
+//     .getPokemonList(10, 0)
+//     .then((response) => console.log(response))
+// );
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="pokedex_light">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -42,7 +63,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Outlet />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
 }
 
 //react query and zustand

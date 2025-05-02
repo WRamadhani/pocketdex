@@ -2,6 +2,7 @@ import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
 import tsParser from "@typescript-eslint/parser";
+import pluginQuery from "@tanstack/eslint-plugin-query";
 import pluginReact from "eslint-plugin-react";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -25,6 +26,7 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+  ...pluginQuery.configs["flat/recommended"],
   {
     languageOptions: {
       globals: globals.browser,
